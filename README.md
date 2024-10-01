@@ -6,7 +6,7 @@ This is the official repository for the paper "**EEG-ImageNet: An Electroencepha
 
 **Figure 1**: Schematic Diagram of the Data File Storage Structure. 
 
-The dataset is available for download through the provided cloud storage(detailed information will be released after reviewer). 
+The dataset is available for download through the provided cloud storage(detailed information will be released after review). 
 
 The EEG-ImageNet dataset contains a total of 63,850 EEG-image pairs from 16 participants. 
 Each EEG data sample has a size of (n\_channels, $f_s \cdot T$), where n\_channels is the number of EEG electrodes, which is 62 in our dataset; $f_s$ is the sampling frequency of the device, which is 1000 Hz in our dataset; and T is the time window size, which in our dataset is the duration of the image stimulus presentation, i.e., 0.5 seconds.
