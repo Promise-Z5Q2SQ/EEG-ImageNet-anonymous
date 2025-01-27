@@ -12,7 +12,7 @@ The EEG-ImageNet dataset contains a total of 63,850 + 24,000 EEG-image pairs fro
 Each EEG data sample has a size of (n_channels, $f_s \cdot T$), where n_channels is the number of EEG electrodes, which is 62 in our dataset; $f_s$ is the sampling frequency of the device, which is 1000 Hz in our dataset; and T is the time window size, which in our dataset is the duration of the image stimulus presentation, i.e., 0.5 seconds.
 Due to ImageNet's copyright restrictions, our dataset only provides the file index of each image in ImageNet and the wnid of its category corresponding to each EEG segment.
 
-<img width="921" alt="image" src="https://github.com/user-attachments/assets/a045a0ab-c53c-4536-90d3-aac3cb8cf256">
+<img width="766" alt="procedure" src="https://github.com/user-attachments/assets/992c8861-6339-4204-b8c0-519b52f65f79" />
 
 **Figure 2**: The overall procedure of our dataset construction and benchmark design. The experimental paradigm involves four stages: S1: Category Presentation (displaying the category label), S2: Fixation (500~ms), S3: Image Presentation (each image displayed for 500~ms), and S4: an optional random test to verify participant engagement. Data flow is indicated by blue arrows, while collected data is highlighted in gray. The stimuli images are sourced from ImageNet21k, with EEG signals aligned to image indices, granularity levels, and labels. The benchmarks (image reconstruction and object classification) are designed to evaluate coarse and fine granularity classification tasks.
 
@@ -22,6 +22,8 @@ The first stage follows the same setup as [Spampinato et al., 2017], with N=50, 
 However, as [Li et al., 2020] pointed out, the experimental results under the paradigm of [Spampinato et al., 2017] may be influenced by temporal effects when using shuffled training and test sets. 
 Therefore, we conducted a second stage of the experiment, with N=30/20 and random shuffling, as shown in Figure 3(B). 6 participants participated in this phase.
 Ultimately, the dataset we construct includes the EEG signals of participants exposed to each image visual stimulus in each valid session, along with the corresponding category's wnid and the image's index in ImageNet21k.
+
+<img width="683" alt="3" src="https://github.com/user-attachments/assets/85ab3ee8-c39b-4ba0-9710-e18e2ce9f5ad" />
 
 **Figure 3**: Comparison of different experimental paradigms. The same colors represent the same categories. Paradigms A and B are adopted in our study. Paradigm C (Random) shuffles all images and has been previously adopted in some psychological research. However, we do not apply Paradigm C in this study as this paradigm can lead to semantic overlap encoded between adjacent contents.
 
