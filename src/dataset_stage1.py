@@ -5,24 +5,27 @@ from PIL import Image
 from torch.utils.data import Dataset
 
 
-class EEGImageNetDataset(Dataset):
-    def __init__(self, args, transform=None):
-        self.dataset_dir = args.dataset_dir
+class EEGImageNetDatasetS1(Dataset):
+    def __init__(self, dataset_dir, subject, granularity, transform=None):
+        self.dataset_dir = dataset_dir
         self.transform = transform
-        loaded = torch.load(os.path.join(args.dataset_dir, "EEG-ImageNet.pth"))
+        loaded = torch.load(os.path.join(dataset_dir, "EEG-ImageNet_stage2.pth"))
         self.labels = loaded["labels"]
         self.images = loaded["images"]
-        if args.subject != -1:
+        if subject >= 0:
             chosen_data = [loaded['dataset'][i] for i in range(len(loaded['dataset'])) if
-                           loaded['dataset'][i]['subject'] == args.subject]
+                           loaded['dataset'][i]['subject'] == subject]
         else:
             chosen_data = loaded['dataset']
-        if args.granularity == 'coarse':
+            if subject == -2:
+                exclude_sub = [0, 4, 6, 12, 13]
+                chosen_data = [i for i in chosen_data if i['subject'] not in exclude_sub]
+        if granularity == 'coarse':
             self.data = [i for i in chosen_data if i['granularity'] == 'coarse']
-        elif args.granularity == 'all':
+        elif granularity == 'all':
             self.data = chosen_data
         else:
-            fine_num = int(args.granularity[-1])
+            fine_num = int(granularity[-1])
             fine_category_range = np.arange(8 * fine_num, 8 * fine_num + 8)
             self.data = [i for i in chosen_data if
                          i['granularity'] == 'fine' and self.labels.index(i['label']) in fine_category_range]
