@@ -1,4 +1,4 @@
-# EEG-ImageNet-Dataset
+# EEG-ImageNet
 
 This is the official repository for the paper "**EEG-ImageNet: A Benchmark for Pre-training and Cross-Time Generalization of EEG-based Visual Decoding**".
 
